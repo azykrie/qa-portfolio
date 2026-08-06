@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Stats } from "./components/Stats";
@@ -126,6 +126,12 @@ export default function QAPortfolio() {
   );
   const [activeLine, setActiveLine] = useState<number>(0);
   const [cursorOn, setCursorOn] = useState<boolean>(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+
+  function handleMobileNavClick(id: string) {
+    setMobileMenuOpen(false);
+    scrollToId(id);
+  }
 
   useEffect(() => {
     const terminalTexts = [
@@ -198,7 +204,61 @@ export default function QAPortfolio() {
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
       `}</style>
 
-      <Navbar profile={PROFILE} onNavigate={scrollToId} />
+      <Navbar profile={PROFILE} onNavigate={scrollToId} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
+
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden"
+          style={{
+            position: "sticky",
+            top: "73px",
+            zIndex: 19,
+            background: "#FCFBF7",
+            borderBottom: "1px solid #E7E4F4",
+            padding: "8px 24px 20px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "4px",
+          }}
+        >
+          <button
+            onClick={() => handleMobileNavClick("skills")}
+            style={{ textAlign: "left", background: "none", border: "none", cursor: "pointer", font: "inherit", fontSize: "15px", fontWeight: 500, color: "#4B4A63", padding: "10px 4px" }}
+          >
+            Skills
+          </button>
+          <button
+            onClick={() => handleMobileNavClick("experience")}
+            style={{ textAlign: "left", background: "none", border: "none", cursor: "pointer", font: "inherit", fontSize: "15px", fontWeight: 500, color: "#4B4A63", padding: "10px 4px" }}
+          >
+            Experience
+          </button>
+          <button
+            onClick={() => handleMobileNavClick("projects")}
+            style={{ textAlign: "left", background: "none", border: "none", cursor: "pointer", font: "inherit", fontSize: "15px", fontWeight: 500, color: "#4B4A63", padding: "10px 4px" }}
+          >
+            Projects
+          </button>
+          <button
+            onClick={() => handleMobileNavClick("contact")}
+            style={{
+              marginTop: "6px",
+              textAlign: "center",
+              color: "#fff",
+              background: "#7C5CFC",
+              cursor: "pointer",
+              font: "inherit",
+              fontSize: "15px",
+              fontWeight: 600,
+              border: "none",
+              padding: "12px 4px",
+              borderRadius: "999px",
+            }}
+          >
+            Get in touch
+          </button>
+        </div>
+      )}
 
       <Hero profile={PROFILE} typedLines={typedLines} activeLine={activeLine} cursorOn={cursorOn} />
 

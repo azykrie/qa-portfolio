@@ -1,5 +1,4 @@
-import React from "react";
-import { Bug, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { Project } from "../types";
 
 const COLORS = {
@@ -43,7 +42,7 @@ function StatusBadge({ status }: { status: string }) {
 
 export function Projects({ projects }: ProjectsProps) {
   return (
-    <section id="projects" className="px-6 md:px-12 pb-20 max-w-5xl mx-auto">
+    <section id="projects" className="px-6 md:px-12 pb-20 max-w-5xl mx-auto" style={{ scrollMarginTop: "73px" }}>
       <div className="flex items-center gap-2 mb-4">
         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: COLORS.violet, textTransform: "uppercase" }}>
           Test cases: projects

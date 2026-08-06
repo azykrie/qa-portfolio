@@ -1,5 +1,4 @@
-import React from "react";
-import { Zap, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import type { Profile } from "../types";
 
 const COLORS = {
@@ -15,7 +14,7 @@ interface ContactProps {
 
 export function Contact({ profile }: ContactProps) {
   return (
-    <section id="contact" className="px-6 md:px-12 pb-20 max-w-5xl mx-auto">
+    <section id="contact" className="px-6 md:px-12 pb-20 max-w-5xl mx-auto" style={{ scrollMarginTop: "73px" }}>
       <div style={{ background: COLORS.ink, borderRadius: "20px", padding: "40px 32px", color: "#fff" }}>
         <div className="flex items-center gap-2 mb-3">
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", color: COLORS.warn, textTransform: "uppercase" }}>

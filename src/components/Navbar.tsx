@@ -1,13 +1,14 @@
-import React from "react";
-import { Terminal, Mail, Github, Linkedin } from "lucide-react";
+import { Terminal, Menu, X } from "lucide-react";
 import type { Profile } from "../types";
 
 interface NavbarProps {
   profile: Profile;
   onNavigate: (id: string) => void;
+  mobileMenuOpen: boolean;
+  setMobileMenuOpen: (open: boolean) => void;
 }
 
-export function Navbar({ profile, onNavigate }: NavbarProps) {
+export function Navbar({ profile, onNavigate, mobileMenuOpen, setMobileMenuOpen }: NavbarProps) {
   return (
     <nav className="flex items-center justify-between px-6 md:px-12 py-5 sticky top-0 z-20">
       <div className="flex items-center gap-2">
@@ -16,6 +17,8 @@ export function Navbar({ profile, onNavigate }: NavbarProps) {
           {profile.name.split(" ")[0].toLowerCase()}.qa
         </span>
       </div>
+
+      {/* Desktop nav */}
       <div className="hidden md:flex items-center gap-7" style={{ fontSize: "14px", fontWeight: 500, color: "#4B4A63" }}>
         <button onClick={() => onNavigate("skills")} style={{ color: "inherit", background: "none", border: "none", cursor: "pointer", font: "inherit" }}>Skills</button>
         <button onClick={() => onNavigate("experience")} style={{ color: "inherit", background: "none", border: "none", cursor: "pointer", font: "inherit" }}>Experience</button>
@@ -35,6 +38,23 @@ export function Navbar({ profile, onNavigate }: NavbarProps) {
           Get in touch
         </button>
       </div>
+
+      {/* Mobile hamburger button - hidden on desktop */}
+      <button
+        className="md:hidden"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label="Toggle menu"
+        style={{
+          background: "none",
+          border: "1.5px solid #E7E4F4",
+          borderRadius: "10px",
+          padding: "8px",
+          cursor: "pointer",
+          color: "#16162A",
+        }}
+      >
+        {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
     </nav>
   );
 }

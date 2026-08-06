@@ -1,4 +1,3 @@
-import React from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 import type { Profile } from "../types";
 
@@ -23,14 +22,14 @@ interface HeroProps {
 export function Hero({ profile, typedLines, activeLine, cursorOn }: HeroProps) {
   return (
     <section className="px-6 md:px-12 pt-14 pb-16 md:pt-20 md:pb-24 max-w-5xl mx-auto">
-      <div
-        style={{
-          background: COLORS.ink,
-          borderRadius: "16px",
-          padding: "22px 24px",
-          boxShadow: "0 20px 50px -20px #16162a55",
-        }}
-      >
+        <div
+          style={{
+            background: COLORS.ink,
+            borderRadius: "16px",
+            padding: "18px 16px",
+            boxShadow: "0 20px 50px -20px #16162a55",
+          }}
+        >
         <div className="flex items-center gap-2 mb-4">
           <span style={{ width: 11, height: 11, borderRadius: "50%", background: COLORS.fail, display: "inline-block" }} />
           <span style={{ width: 11, height: 11, borderRadius: "50%", background: COLORS.warn, display: "inline-block" }} />
@@ -39,7 +38,15 @@ export function Hero({ profile, typedLines, activeLine, cursorOn }: HeroProps) {
             career-test-runner
           </span>
         </div>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "13px", lineHeight: 1.9, minHeight: "180px", color: "#00B37E" }}>
+        <div
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: "clamp(10.5px, 2.9vw, 13px)",
+            lineHeight: 1.9,
+            minHeight: "180px",
+            overflowX: "auto",
+          }}
+        >
           {typedLines.map((line, idx) => {
             if (!line) return null;
             const isActiveTyping = idx === activeLine;
@@ -48,7 +55,7 @@ export function Hero({ profile, typedLines, activeLine, cursorOn }: HeroProps) {
             else if (idx === 1) color = "#9C9AB8";
             else if (idx >= 6) color = "#FFB020";
             return (
-              <div key={idx} style={{ color }}>
+              <div key={idx} style={{ color, whiteSpace: "pre" }}>
                 {line}
                 {isActiveTyping && (
                   <span style={{ color: "#fff", opacity: cursorOn ? 1 : 0 }}>▍</span>

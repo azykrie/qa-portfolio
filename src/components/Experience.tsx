@@ -1,5 +1,3 @@
-import React from "react";
-import { Workflow } from "lucide-react";
 import type { PipelineJob } from "../types";
 
 const COLORS = {
@@ -45,7 +43,7 @@ function StatusBadge({ status }: { status: string }) {
 
 export function Experience({ jobs }: ExperienceProps) {
   return (
-    <section id="experience" className="px-6 md:px-12 pb-20 max-w-5xl mx-auto">
+    <section id="experience" className="px-6 md:px-12 pb-20 max-w-5xl mx-auto" style={{ scrollMarginTop: "73px" }}>
       <div className="flex items-center gap-2 mb-4">
         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: COLORS.violet, textTransform: "uppercase" }}>
           Pipeline: work experience
